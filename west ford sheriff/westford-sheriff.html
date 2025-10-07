@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>West Ford Sheriff's Department</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Orbitron", sans-serif;
+      background: radial-gradient(circle at center, #0a0a0a, #000);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: relative;
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(90deg, #002244, #000, #440000);
+      box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
+    }
+
+    h1 {
+      font-size: 2.5em;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: #00ffff;
+      text-shadow: 0 0 10px #00ffff, 0 0 20px #ff0000;
+    }
+
+    .siren {
+      font-size: 3em;
+      display: inline-block;
+      animation: sirenLight 1s infinite alternate;
+      margin: 0 10px;
+    }
+
+    @keyframes sirenLight {
+      0% { filter: drop-shadow(0 0 15px red); color: #ff0000; }
+      50% { filter: drop-shadow(0 0 15px blue); color: #0000ff; }
+      100% { filter: drop-shadow(0 0 15px red); color: #ff0000; }
+    }
+
+    main {
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 15px;
+      padding: 15px 35px;
+      font-size: 1.2em;
+      color: #fff;
+      border: 2px solid #0ff;
+      border-radius: 10px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      cursor: pointer;
+      background-color: #111;
+      transition: box-shadow 0.3s, transform 0.2s;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #888;
+      border-top: 1px solid #222;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="siren">🚨</span>
+    <h1>West Ford Sheriff's Department</h1>
+    <span class="siren">🚨</span>
+  </header>
+
+  <main>
+    <p>Üdvözöljük a West Ford Seriff Hivatal hivatalos oldalán.</p>
+    <button class="btn">🚓 Bevetések</button>
+    <button class="btn">📋 Jelentések</button>
+    <button class="btn">📞 Kapcsolat</button>
+  </main>
+
+  <footer>
+    <p>© 2025 West Ford Sheriff's Department | Minden jog fenntartva.</p>
+  </footer>
+
+  <script>
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(btn => {
+      let hue = 0;
+      btn.addEventListener('mouseenter', () => {
+        btn.hoverInterval = setInterval(() => {
+          btn.style.backgroundColor = `hsl(${hue}, 100%, 30%)`;
+          hue += 2;
+          if (hue > 360) hue = 0;
+        }, 30);
+      });
+      btn.addEventListener('mouseleave', () => {
+        clearInterval(btn.hoverInterval);
+        btn.style.backgroundColor = '#111';
+      });
+    });
+  </script>
+</body>
+</html>
